@@ -22,6 +22,7 @@ library
                  , Snap.Plus.Handlers
                  , Snap.Plus.Forms
                  , Snap.Plus.Paths
+                 , Snap.Plus.Opaleye
                  , Snap.Snaplet.PostgresqlSimple.Plus
 
   build-depends: base                        >= 4       && < 5
