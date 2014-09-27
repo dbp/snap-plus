@@ -32,7 +32,7 @@ emailForm t = emailDnsCheck $ fst <$>
                          (maybe True (uncurry (==)) . uncurry (liftM2 (,)))
 
 emailFormSingle :: HasDns m => Maybe Text -> Form Text m (Maybe Text)
-emailFormSingle t = emailDnsCheck $ "address" .: emailValidateSimple (optionalText t)
+emailFormSingle t = "address" .: emailDnsCheck (emailValidateSimple (optionalText t))
 
 emailValidateSimple :: Monad m
                     => Form Text m (Maybe Text)

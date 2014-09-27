@@ -43,11 +43,19 @@ Test-Suite test-snap-plus
   hs-source-dirs: spec
   main-is: Main.hs
   default-language:    Haskell2010
-  build-depends: base       >= 4   && < 0.5
-               , hspec2     >= 0.4 && < 0.5
-               , hspec-snap >= 0.2 && < 0.3
+  build-depends: base                        >= 4      && < 5
+               , hspec2                      >= 0.4    && < 0.5
+               , hspec-snap                  >= 0.2    && < 0.3
                -- NOTE(dbp 2014-09-19): Transitive. HandsomeSoup has no restrictions on network,
                -- and API changed in 2.6 to lose Network.URI
-               , network              < 2.6
+               , network                                   < 2.6
+               , bytestring                  >= 0.9     && < 0.11
+               , text                        >= 0.11    && < 1.2
+               , lens                        >= 4.0     && < 4.4
+               , snap                        >= 0.13    && < 0.14
+               , dns                         >= 1.2     && < 1.5
+               , containers                  >= 0.5     && < 0.6
+               , digestive-functors          >= 0.7     && < 0.8
+
 
   build-depends: snap-plus >= 0.1.0.0
