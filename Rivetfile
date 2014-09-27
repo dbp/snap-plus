@@ -1,0 +1,5 @@
+dependencies = [ "karamaan/karamaan-opaleye:dev"
+               , "karamaan/karamaan-plankton"
+               , "karamaan/product-profunctors"
+               , "tomjaguarpaw/haskelldb"
+               ]

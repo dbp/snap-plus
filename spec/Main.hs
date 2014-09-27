@@ -47,13 +47,14 @@ app = makeSnaplet "app" "An snaplet example application." Nothing $ do
     return (App ns)
 
 main :: IO ()
-main = hspec $ snap (route routes) app $ do
-         describe "email validation using presence of dns MX records" $
-           do it "should validate @gmail.com" $
-                form (Value (Just "a@gmail.com"))
-                     (emailFormSingle Nothing)
-                     (M.fromList [("address", "a@gmail.com")])
-              it "should not validate @example.com" $
-                form (ErrorPaths ["address"])
-                     (emailFormSingle Nothing)
-                     (M.fromList [("address", "e@example.com")])
+main = hspec $ do
+  describe "network-tests" $ snap (route routes) app $ do
+    describe "email validation using presence of dns MX records" $
+      do it "should validate @gmail.com" $
+           form (Value (Just "a@gmail.com"))
+                (emailFormSingle Nothing)
+                (M.fromList [("address", "a@gmail.com")])
+         it "should not validate @example.com" $
+           form (ErrorPaths ["address"])
+                (emailFormSingle Nothing)
+                (M.fromList [("address", "e@example.com")])
