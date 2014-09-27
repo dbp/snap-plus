@@ -4,7 +4,7 @@
 {-# LANGUAGE MultiParamTypeClasses     #-}
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
-module Opaleye (
+module Snap.Plus.Opaleye (
     module Karamaan.Opaleye.Reexports
   , module Karamaan.Opaleye.Table
   , module Karamaan.Opaleye.SQL
