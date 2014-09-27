@@ -81,10 +81,9 @@ import           Data.Profunctor.Product.Default (Default, def)
 import           Data.Profunctor.Product.TH      (makeAdaptorAndInstance)
 
 
-import           Control.Lens                    (use, view)
 import           Data.Pool                       (withResource)
 import           Database.PostgreSQL.Simple      (Connection)
-import           Snap                            (liftIO, snapletValue)
+import           Snap                            (liftIO)
 import           Snap.Snaplet.PostgresqlSimple   hiding (Query)
 
 import           Data.Int                        (Int64)
@@ -103,24 +102,24 @@ type I a = a
 type MaybeWire a = Maybe (Wire a)
 type Con s a = s
 
-withPgConn :: HasPostgres m => (Connection -> m a) -> m a
+withPgConn :: (Functor m, HasPostgres m) => (Connection -> m a) -> m a
 withPgConn f  =  do pool <- pgPool <$> getPostgresState
                     withResource pool f
 
-runO :: (HasPostgres m, Default QueryRunner a b) => Query a -> m [b]
+runO :: (HasPostgres m, Functor m, Default QueryRunner a b) => Query a -> m [b]
 runO q = withPgConn $ \con -> liftIO $ runQuery def q con
 
-delO :: (HasPostgres m, Default TableExprRunner t t) =>
+delO :: (HasPostgres m, Functor m, Default TableExprRunner t t) =>
         Table t -> ExprArr t (Wire Bool) -> m Int64
 delO t e = withPgConn $ \con -> liftIO $ runDeleteConnDef con t e
 
-insO :: (HasPostgres m,
+insO :: (HasPostgres m, Functor m,
          Default (PPOfContravariant Assocer) t' t',
          Default TableMaybeWrapper t t')
      => Table t -> Expr t' -> m Int64
 insO t e = withPgConn $ \con -> liftIO $ runInsertConnDef con t e
 
-insOR :: (HasPostgres m,
+insOR :: (HasPostgres m, Functor m,
           Default (PPOfContravariant Assocer) maybeWires maybeWires,
           Default TableMaybeWrapper wires maybeWires,
           Default TableExprRunner wires wires,
@@ -133,7 +132,7 @@ insOR :: (HasPostgres m,
 insOR t e r = withPgConn $ \con -> liftIO $ runInsertReturningConnDef con t e r
 
 
-updO ::  (HasPostgres m,
+updO ::  (HasPostgres m, Functor m,
           Default TableExprRunner t t,
           Default (PPOfContravariant Assocer) t' t',
           Default TableMaybeWrapper t t') =>
