@@ -21,9 +21,6 @@ class (Monad m, MonadIO m) => HasDns m where
 requiredForm :: Monad m => Text -> Form Text m (Maybe a) -> Form Text m a
 requiredForm msg = validate (maybe (Error msg) Success)
 
-nameForm :: Monad m => Maybe Text -> Form Text m Text
-nameForm = nonEmpty . text
-
 emailForm :: HasDns m => Maybe Text -> Form Text m (Maybe Text)
 emailForm t = emailDnsCheck $ fst <$>
               (matching $ (,) <$> "address" .: emailValidateSimple (optionalText t)
@@ -53,9 +50,6 @@ emailDnsCheck = checkM "Email address domain (after the @) not valid." $ maybe (
                                           _ -> return True
                             Right [] -> return False
                             _ -> return True
-
-passwordForm :: Monad m => Form Text m Text
-passwordForm = nonEmptyTextForm
 
 nonEmpty :: Monad m => Form Text m Text -> Form Text m Text
 nonEmpty = check "Must not be blank" tNotNull
