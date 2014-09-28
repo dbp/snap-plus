@@ -23,6 +23,7 @@ library
                  , Snap.Plus.Forms
                  , Snap.Plus.Paths
                  , Snap.Plus.Opaleye
+                 , Snap.Plus.Splices
                  , Snap.Snaplet.PostgresqlSimple.Plus
 
   build-depends: base                        >= 4       && < 5
@@ -44,6 +45,8 @@ library
                , old-time
                , profunctors
                , resource-pool-catchio
+               , heist
+               , xmlhtml
 
 
   hs-source-dirs:      src
