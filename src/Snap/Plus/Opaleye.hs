@@ -22,6 +22,7 @@ module Snap.Plus.Opaleye (
   , module Karamaan.Opaleye.QueryArr
   , module Karamaan.Opaleye.MakeExpr
   , module Karamaan.Opaleye.Manipulation
+  , module Karamaan.Opaleye.Nullable
   , showQuery
   , restrictNullable
   , I
@@ -60,6 +61,7 @@ import           Karamaan.Opaleye.Manipulation   (Assocer, AssocerE,
                                                   runInsertConnDef,
                                                   runInsertReturningConnDef,
                                                   runUpdateConnDef)
+import           Karamaan.Opaleye.Nullable       (toNullable)
 import           Karamaan.Opaleye.Operators2     (not)
 import           Karamaan.Opaleye.Order
 import           Karamaan.Opaleye.QueryArr       (Query)
