@@ -24,6 +24,7 @@ library
                  , Snap.Plus.Paths
                  , Snap.Plus.Opaleye
                  , Snap.Plus.Splices
+                 , Snap.Plus.FileStore
                  , Snap.Snaplet.PostgresqlSimple.Plus
 
   build-depends: base                        >= 4       && < 5
@@ -47,6 +48,10 @@ library
                , resource-pool-catchio
                , heist
                , xmlhtml
+               , directory
+               , filepath
+               , random
+               , mtl
 
 
   hs-source-dirs:      src
