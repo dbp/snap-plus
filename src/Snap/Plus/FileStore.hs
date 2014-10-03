@@ -20,10 +20,11 @@ data FileStore = Directory FilePath Text
 
 setupDirectoryStore :: FilePath           -- ^ Path where files should be stored.
                     -> Text               -- ^ Base url where files should be served from
-                    -> Initializer b v ()
+                    -> Initializer b v FileStore
 setupDirectoryStore dir url =
   do addRoutes [(T.encodeUtf8 url, serveDirectory dir)]
      liftIO $ createDirectoryIfMissing True dir
+     return (Directory dir url)
 
 class (Functor m, MonadIO m) => HasFileStore m where
   getFileStore :: m FileStore
