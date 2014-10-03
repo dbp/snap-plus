@@ -50,8 +50,13 @@ storeFile' store@(Directory dir basepath) old =
        else (do liftIO $ copyFile old full
                 return $ T.concat ["/", basepath, "/", T.pack new])
 
-deleteFile :: (Functor m, MonadIO m) => FileStore -> Text -> m ()
-deleteFile (Directory dir base) url =
+-- | Takes the url to a file, and removes it from the filestore.
+deleteFile :: HasFileStore m => Text -> m ()
+deleteFile url = do s <- getFileStore
+                    deleteFile' s url
+
+deleteFile' :: (Functor m, MonadIO m) => FileStore -> Text -> m ()
+deleteFile' (Directory dir base) url =
   do let file = T.unpack $ T.drop (2 + T.length base) url
      let path = dir ++ [pathSeparator] ++ file
      e <- liftIO $ doesFileExist path
