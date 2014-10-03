@@ -1,5 +1,5 @@
 name:                snap-plus
-version:             0.1.0.0
+version:             0.1.1.0
 synopsis:            A Snap library overlay.
 description:         An opinionated library that re-exports (modified or expanded)
                      modules related to Snap development. If a module has a modified
