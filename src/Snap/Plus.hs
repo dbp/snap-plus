@@ -11,6 +11,7 @@ module Snap.Plus ( module Snap
                  , tshow
                  , tNotNull
                  , readSafe
+                 , Paramable(..)
                  , getParam
                  , requireParam
                  , getParamOr
