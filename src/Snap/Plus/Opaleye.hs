@@ -105,8 +105,10 @@ type MaybeWire a = Maybe (Wire a)
 type Con s a = s
 
 withPgConn :: (Functor m, HasPostgres m) => (Connection -> m a) -> m a
-withPgConn f  =  do pool <- pgPool <$> getPostgresState
-                    withResource pool f
+withPgConn f  =  do pg <- getPostgresState
+                    case pg of
+                      PostgresPool pool ->  withResource pool f
+                      PostgresConn conn -> f conn
 
 runO :: (HasPostgres m, Functor m, Default QueryRunner a b) => Query a -> m [b]
 runO q = withPgConn $ \con -> liftIO $ runQuery def q con
