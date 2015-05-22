@@ -5,6 +5,7 @@ module Snap.Plus.Forms where
 
 import           Control.Applicative
 import           Control.Monad
+import           Control.Monad.Trans  (MonadIO, liftIO)
 import           Data.Char
 import qualified Data.Text            as T
 import qualified Data.Text.Encoding   as T

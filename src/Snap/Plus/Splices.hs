@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Snap.Plus.Splices where
 
+import           Control.Monad.Trans
 import qualified Data.Text                as T
 import qualified Data.Text.Encoding       as T
 import           Heist

@@ -31,6 +31,8 @@ module Snap.Plus ( module Snap
 
 import           Control.Applicative   ((<$>), (<*>))
 import           Control.Arrow         (first)
+import           Control.Monad         (MonadPlus, join, mzero, unless)
+import           Control.Monad.Trans   (MonadIO, liftIO)
 import           Data.Maybe
 import           Data.Monoid           (Monoid, mappend)
 import           Data.Text             (Text, pack, toLower, unpack)
