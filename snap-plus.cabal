@@ -27,15 +27,15 @@ library
                  , Snap.Snaplet.PostgresqlSimple.Plus
 
   build-depends: base                        >= 4       && < 5
-               , text                        >= 0.11    && < 1.2
-               , lens                        >= 4.0     && < 4.4
-               , snap                        >= 0.13    && < 0.14
-               , snap-core                   >= 0.9     && < 0.10
-               , snap-extras                 >= 0.10    && < 0.11
+               , text
+               , lens                        >= 4.0
+               , snap                        >= 0.13    && < 0.15
+               , snap-core
+               , snap-extras                 >= 0.10
                , postgresql-simple
-               , snaplet-postgresql-simple   >= 0.6     && < 0.7
-               , digestive-functors          >= 0.7     && < 0.8
-               , digestive-functors-snap     >= 0.6     && < 0.7
+               , snaplet-postgresql-simple   >= 0.6
+               , digestive-functors          >= 0.7
+               , digestive-functors-snap     >= 0.6
                , dns                         >= 1.2     && < 1.5
                , haskelldb
                , time
@@ -64,13 +64,13 @@ Test-Suite test-snap-plus
                -- NOTE(dbp 2014-09-19): Transitive. HandsomeSoup has no restrictions on network,
                -- and API changed in 2.6 to lose Network.URI
                , network                                   < 2.6
-               , bytestring                  >= 0.9     && < 0.11
-               , text                        >= 0.11    && < 1.2
-               , lens                        >= 4.0     && < 4.4
-               , snap                        >= 0.13    && < 0.14
+               , bytestring
+               , text
+               , lens
+               , snap                        >= 0.13    && < 0.15
                , dns                         >= 1.2     && < 1.5
-               , containers                  >= 0.5     && < 0.6
-               , digestive-functors          >= 0.7     && < 0.8
+               , containers
+               , digestive-functors          >= 0.7
 
 
   build-depends: snap-plus >= 0.1.1.1
