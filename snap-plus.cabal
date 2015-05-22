@@ -1,5 +1,5 @@
 name:                snap-plus
-version:             0.1.1.1
+version:             0.2.0.0
 synopsis:            A Snap library overlay.
 description:         An opinionated library that re-exports (modified or expanded)
                      modules related to Snap development. If a module has a modified
@@ -22,7 +22,6 @@ library
                  , Snap.Plus.Handlers
                  , Snap.Plus.Forms
                  , Snap.Plus.Paths
-                 , Snap.Plus.Opaleye
                  , Snap.Plus.Splices
                  , Snap.Plus.FileStore
                  , Snap.Snaplet.PostgresqlSimple.Plus
@@ -38,9 +37,6 @@ library
                , digestive-functors          >= 0.7     && < 0.8
                , digestive-functors-snap     >= 0.6     && < 0.7
                , dns                         >= 1.2     && < 1.5
-               , karamaan-opaleye
-               , karamaan-plankton
-               , product-profunctors
                , haskelldb
                , time
                , old-time
