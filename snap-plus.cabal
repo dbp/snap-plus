@@ -61,9 +61,7 @@ Test-Suite test-snap-plus
   build-depends: base                        >= 4      && < 5
                , hspec                      >= 2    && < 2.1
                , hspec-snap                  >= 0.2    && < 0.4
-               -- NOTE(dbp 2014-09-19): Transitive. HandsomeSoup has no restrictions on network,
-               -- and API changed in 2.6 to lose Network.URI
-               , network                                   < 2.6
+               , network                                  
                , bytestring
                , text
                , lens
